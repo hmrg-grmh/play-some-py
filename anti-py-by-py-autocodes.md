@@ -280,6 +280,8 @@ lambda cnt:
 > 除了包裹 `lambda` 定义的小括号在内容另起一行的时候以外，一切括号，应当想办法确保要么横着是一对要么竖着是一对。如果新增新的格式化规则，也是在确保这一条的前提下进行的，或者就是为了更好确保这一条而进行。
 > - `lambda` 定义被调用的话，为了好看，最好确保包裹定义的后括号和参数列表之间有所间隔；但为了方便你调试，所以最好别间隔到下一行，只用空格间隔就好拉。
 > - 参数列表内容如果单独换行，向后一次缩进，尾括号可以跟前面的逗号竖着对齐而不是跟对应的头括号。（这应该是唯一的允许上下一对括号不对其的地方。遵照这个原则，也可以做到：一看到不对齐的括号，就知道它前面是参数列表。）
+> - `lambda` 定义被赋值的时候可以不被括号包裹。如果被包裹，则按照参数列表的规则来，即向后一层。因为前括号不能另起一行。。。
+> - 多个换行了的参数列表的尾括号连续结尾的时候，应该按照层级程度叠加空格。
 > 
 
 现在也可以轻易让结果跟上面那**列表**更像：
@@ -656,8 +658,8 @@ print(x(0))
 
 ```python
 xforexec = (
-        lambda cnt : 
-        """
+    lambda cnt : 
+    """
 from pyecharts.charts import Bar
 from pyecharts import options as opts
 
@@ -666,20 +668,25 @@ from pyecharts import options as opts
     .add_xaxis(["衬衫", "毛衣", "领带", "裤子", "风衣", "高跟鞋", "袜子"])
 {}    .set_global_opts(title_opts=opts.TitleOpts(title="某商场销售情况"))
 ).render("shangjias.html")
-        """.format(
-            (lambda selfff: selfff(selfff)) (
+    """.format(
+        
+        ## (-> (a) (a a))
+        (lambda selfff: selfff(selfff)) (
+            
+            ## reduce
             lambda selff: 
                 lambda op, list, res: 
                     
                     res if (list == []) 
                     else (selff(selff))(
                         
-                        op,list[1::],op(res,list[0]) ) ) (
+                        op,list[1::],op(res,list[0]) )  ) (
             
             
-            
+            ## str adds
             lambda x,y:x+y , 
             
+            ## str list (need to know val of cnt)
             [   '    .add_yaxis("{}",{})\n'.format(sj_msg[0],sj_msg[1])
 
                 for sj_msg in 
@@ -703,8 +710,8 @@ from pyecharts import options as opts
                 ] 
             ] , 
             
-            '' ) )
-        )
+            ## first of adding
+            '' )  )   )
 exec(xforexec(3))
 
 ```
