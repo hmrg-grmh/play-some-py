@@ -264,8 +264,8 @@ lambda cnt:
 
 ```python
 [   (lambda rndlow,add: 
-        (rndlow,rndlow+add)
-    ) (随机.randint(40,300), 随机.randint(10,600) ) 
+        (rndlow , rndlow + add)
+    ) (随机.randint(40, 300), 随机.randint(10, 600) ) 
     for will_not_use in range(13) 
 ]
 
@@ -296,8 +296,8 @@ lambda cnt:
 [   (
         '商家{}'.format(i+1) ,
         (lambda rndlow,add: 
-            (rndlow,rndlow+add)
-        ) (随机.randint(40,300), 随机.randint(10,600))
+            (rndlow , rndlow + add)
+        ) (随机.randint(40, 300), 随机.randint(10, 600))
     )
     for i in range(13)
 ]
@@ -314,8 +314,8 @@ lambda cnt:
     [   (
             '商家{}'.format(i+1) ,
             (lambda rndlow,add: 
-                (rndlow,rndlow+add)
-            ) (随机.randint(40,300), 随机.randint(10,600))
+                (rndlow , rndlow + add)
+            ) (随机.randint(40, 300), 随机.randint(10, 600))
         )
         for i in range(cnt)
     ]
@@ -329,11 +329,11 @@ lambda cnt:
 
 ```python
 [   (
-        sj[0], 
+        sj[0] , 
         (lambda cnt: 
             lambda low,high: 
-                [随机.randint(low,high) for i in range(cnt)]
-        )(7)(sj[1][0],sj[1][1]) 
+                [随机.randint(low, high) for i in range(cnt)]
+        ) (7) (sj[1][0], sj[1][1]) 
     )
     
     for sj in 
@@ -341,8 +341,8 @@ lambda cnt:
             [   (
                     '商家{}'.format(i+1) ,
                     (lambda rndlow,add: 
-                        (rndlow,rndlow+add)
-                    ) (随机.randint(40,300), 随机.randint(10,600))
+                        (rndlow , rndlow + add)
+                    ) (随机.randint(40, 300), 随机.randint(10, 600))
                 )
                 for i in range(cnt)
             ]
@@ -368,11 +368,11 @@ lambda cnt:
 
     for sj_msg in 
     [   (
-            sj[0], 
+            sj[0] , 
             (lambda cnt: 
                 lambda low,high: 
-                    [随机.randint(low,high) for i in range(cnt)]
-            )(7)(sj[1][0],sj[1][1]) 
+                    [随机.randint(low, high) for i in range(cnt)]
+            ) (7) (sj[1][0], sj[1][1]) 
         )
         
         for sj in 
@@ -380,8 +380,8 @@ lambda cnt:
                 [   (
                         '商家{}'.format(i+1) ,
                         (lambda rndlow,add: 
-                            (rndlow,rndlow+add)
-                        ) (随机.randint(40,300), 随机.randint(10,600))
+                            (rndlow , rndlow + add)
+                        ) (随机.randint(40, 300), 随机.randint(10, 600))
                     )
                     for i in range(cnt)
                 ]
@@ -419,11 +419,11 @@ lambda cnt:
 ## 这是非通用的 Y 组合子 用来让匿名函数可以自己调用自己
 (lambda selfff: selfff(selfff)) (
     lambda selff: 
-        lambda op, list, res: 
+        lambda op,list,res: 
             
             ## 这下面是退出逻辑
             res if (list == []) 
-            else (selff(selff))(
+            else (selff(selff)) (
                 
                 ## 这里是递归 下面是新的参数 上面是生成一个自己然后才能递归才能传新参数
                 op, list[1::], op(res, list[0]) )  ) (
@@ -464,11 +464,11 @@ from functools import reduce as 汇总
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
@@ -476,8 +476,8 @@ from functools import reduce as 汇总
                     [   (
                             '商家{}'.format(i+1) ,
                             (lambda rndlow,add: 
-                                (rndlow,rndlow+add)
-                            ) (随机.randint(40,300), 随机.randint(10,600))
+                                (rndlow , rndlow + add)
+                            ) (随机.randint(40, 300), 随机.randint(10, 600))
                         )
                         for i in range(cnt)
                     ]
@@ -498,11 +498,11 @@ x = lambda : 汇总 (
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
@@ -510,8 +510,8 @@ x = lambda : 汇总 (
                     [   (
                             '商家{}'.format(i+1) ,
                             (lambda rndlow,add: 
-                                (rndlow,rndlow+add)
-                            ) (随机.randint(40,300), 随机.randint(10,600))
+                                (rndlow , rndlow + add)
+                            ) (随机.randint(40, 300), 随机.randint(10, 600))
                         )
                         for i in range(cnt)
                     ]
@@ -539,19 +539,19 @@ lambda cnt : 汇总 (
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
                 [   (
                         '商家{}'.format(i+1) ,
                         (lambda rndlow,add: 
-                            (rndlow,rndlow+add)
-                        ) (随机.randint(40,300), 随机.randint(10,600))
+                            (rndlow , rndlow + add)
+                        ) (随机.randint(40, 300), 随机.randint(10, 600))
                     )
                     for i in range(cnt)
                 ]
@@ -568,19 +568,19 @@ lambda cnt : 汇总 (
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
                 [   (
                         '商家{}'.format(i+1) ,
                         (lambda rndlow,add: 
-                            (rndlow,rndlow+add)
-                        ) (随机.randint(40,300), 随机.randint(10,600))
+                            (rndlow , rndlow + add)
+                        ) (随机.randint(40, 300), 随机.randint(10, 600))
                     )
                     for i in range(cnt)
                 ]
@@ -601,19 +601,19 @@ x = lambda cnt : 汇总 (
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
                 [   (
                         '商家{}'.format(i+1) ,
                         (lambda rndlow,add: 
-                            (rndlow,rndlow+add)
-                        ) (随机.randint(40,300), 随机.randint(10,600))
+                            (rndlow , rndlow + add)
+                        ) (随机.randint(40, 300), 随机.randint(10, 600))
                     )
                     for i in range(cnt)
                 ]
@@ -633,10 +633,10 @@ print(x(0))
 ```python
 x = lambda cnt : (lambda selfff: selfff(selfff)) (
     lambda selff: 
-        lambda op, list, res: 
+        lambda op,list,res: 
             
             res if (list == []) 
-            else (selff(selff))(
+            else (selff(selff)) (
                 
                 op, list[1::], op(res, list[0]) )  ) (
     lambda x,y:x+y ,
@@ -644,11 +644,11 @@ x = lambda cnt : (lambda selfff: selfff(selfff)) (
 
         for sj_msg in 
         [   (
-                sj[0], 
+                sj[0] , 
                 (lambda cnt: 
                     lambda low,high: 
-                        [随机.randint(low,high) for i in range(cnt)]
-                )(7)(sj[1][0], sj[1][1]) 
+                        [随机.randint(low, high) for i in range(cnt)]
+                ) (7) (sj[1][0], sj[1][1]) 
             )
             
             for sj in 
@@ -656,7 +656,7 @@ x = lambda cnt : (lambda selfff: selfff(selfff)) (
                         '商家{}'.format(i+1) ,
                         (lambda rndlow,add: 
                             (rndlow , rndlow + add)
-                        ) (随机.randint(40,300), 随机.randint(10,600))
+                        ) (随机.randint(40, 300), 随机.randint(10, 600))
                     )
                     for i in range(cnt)
                 ]
@@ -697,10 +697,10 @@ from pyecharts import options as opts
             
             ## reduce
             lambda selff: 
-                lambda op, list, res: 
+                lambda op,list,res: 
                     
                     res if (list == []) 
-                    else (selff(selff))(
+                    else (selff(selff)) (
                         
                         op, list[1::], op(res, list[0]) )  ) (
             
@@ -713,19 +713,19 @@ from pyecharts import options as opts
 
                 for sj_msg in 
                 [   (
-                        sj[0], 
+                        sj[0] , 
                         (lambda cnt: 
                             lambda low,high: 
-                                [随机.randint(low,high) for i in range(cnt)]
-                        )(7)(sj[1][0], sj[1][1]) 
+                                [随机.randint(low, high) for i in range(cnt)]
+                        ) (7) (sj[1][0], sj[1][1]) 
                     )
                     
                     for sj in 
                         [   (
                                 '商家{}'.format(i+1) ,
                                 (lambda rndlow,add: 
-                                    (rndlow,rndlow+add)
-                                ) (随机.randint(40,300), 随机.randint(10,600))
+                                    (rndlow , rndlow + add)
+                                ) (随机.randint(40, 300), 随机.randint(10, 600))
                             )
                             for i in range(cnt)
                         ]
